@@ -23,3 +23,5 @@ This project aims to establish a professional online presence and provide a cent
 * Professional contact information.
 
 The project is developed following software engineering best practices, including modular architecture, version control, code quality, automated testing, and CI/CD.
+
+Author: Nibedita
