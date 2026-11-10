@@ -11,7 +11,7 @@
 - Do not add features without explicit approval, even if they are common in other portfolios.
 
 ## 2. Technology Stack and Standards
-- Angular (latest stable compatible with the environment), TypeScript strict mode, standalone components, SCSS.
+- Angular 20 (as installed in this workspace). Do not use APIs or syntax from newer major versions. TypeScript strict mode, standalone components, SCSS.
 - Angular CLI for builds. Prefer native Angular and browser capabilities.
 - No paid services. Ask before installing any new dependency, and justify it.
 
