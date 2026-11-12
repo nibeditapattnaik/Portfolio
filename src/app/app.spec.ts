@@ -14,10 +14,22 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', () => {
+  it('should render the portfolio sections with anchor targets', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, portfolio');
+
+    expect(
+      Array.from(compiled.querySelectorAll('main section')).map((section) => section.id),
+    ).toEqual([
+      'hero',
+      'about',
+      'engineering-focus',
+      'projects',
+      'skills',
+      'experience',
+      'education',
+      'contact',
+    ]);
   });
 });
