@@ -1,3 +1,25 @@
 <section id="about" aria-labelledby="about-title">
   <app-section-heading headingId="about-title">About</app-section-heading>
+  <p class="experience-summary">{{ profile.yearsOfExperience }} years of experience</p>
+  <div class="about-summaries">
+    @for (summary of profile.aboutSummary; track summary) {
+      <p>{{ summary }}</p>
+    }
+  </div>
+  <div class="about-group">
+    <h3>Roles</h3>
+    <ul class="tag-list" aria-label="Professional roles">
+      @for (role of profile.roles; track role) {
+        <li><app-tag-chip [label]="role" /></li>
+      }
+    </ul>
+  </div>
+  <div class="about-group">
+    <h3>Domains</h3>
+    <ul class="tag-list" aria-label="Professional domains">
+      @for (domain of profile.domains; track domain) {
+        <li><app-tag-chip [label]="domain" /></li>
+      }
+    </ul>
+  </div>
 </section>

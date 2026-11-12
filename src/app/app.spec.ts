@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
+import { PROFILE } from './data/profile';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -31,5 +32,52 @@ describe('App', () => {
       'education',
       'contact',
     ]);
+  });
+
+  it('should render the hero and about content from the profile data', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelector('.hero-section h1')?.textContent?.trim()).toBe(PROFILE.name);
+    expect(compiled.querySelector('.hero-designation')?.textContent?.trim()).toBe(
+      PROFILE.designation,
+    );
+    expect(compiled.querySelector('.hero-tagline')?.textContent?.trim()).toBe(PROFILE.tagline);
+    expect(
+      Array.from(compiled.querySelectorAll('.about-summaries p')).map((paragraph) =>
+        paragraph.textContent?.trim(),
+      ),
+    ).toEqual(PROFILE.aboutSummary);
+    expect(
+      Array.from(compiled.querySelectorAll('#about app-tag-chip')).map((chip) =>
+        chip.textContent?.trim(),
+      ),
+    ).toEqual([...PROFILE.roles, ...PROFILE.domains]);
+  });
+
+  it('should expose secure external links and support keyboard menu dismissal', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const githubLink = compiled.querySelector<HTMLAnchorElement>(
+      '.hero-actions a[href="' + PROFILE.github + '"]',
+    );
+    const menuButton = compiled.querySelector<HTMLButtonElement>('.site-menu-toggle');
+    const firstNavLink = compiled.querySelector<HTMLAnchorElement>('.site-nav a');
+    const nav = compiled.querySelector<HTMLElement>('.site-nav');
+
+    expect(githubLink?.target).toBe('_blank');
+    expect(githubLink?.rel).toBe('noopener noreferrer');
+    expect(menuButton?.getAttribute('aria-expanded')).toBe('false');
+
+    menuButton?.click();
+    fixture.detectChanges();
+    expect(menuButton?.getAttribute('aria-expanded')).toBe('true');
+
+    firstNavLink?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    fixture.detectChanges();
+    expect(menuButton?.getAttribute('aria-expanded')).toBe('false');
+    expect(nav?.classList.contains('site-nav--open')).toBeFalse();
   });
 });

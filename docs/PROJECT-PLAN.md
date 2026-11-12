@@ -10,8 +10,10 @@
 | Work | Branch | Who |
 | ---- | ------ | --- |
 | Story 01 (project setup, initial commit) | `main` | Developer only, before branch protection is enabled |
-| Stories 02–09 (structure, UI, content, QA) | `feature/portfolio-ui` | Developer + agent |
-| Stories 10–11 (CI/CD, release) | `feature/github-deployment` | Developer + agent |
+| Stories 02–09 (structure, UI, content, QA) | `feature/*` UI branches (e.g. `feature/portfolio-ui`, `feature/hero-about`) | Developer + agent |
+| Stories 10–11 (CI/CD, release) | `feature/github-deployment` or `ci/*` | Developer + agent |
+
+Branch names are examples. Each branch is created from the latest `main`, merged through a pull request, then deleted.
 
 All changes reach `main` through a pull request that passes the build check.
 
