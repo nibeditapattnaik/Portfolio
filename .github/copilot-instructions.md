@@ -43,8 +43,11 @@
 
 ### Branches
 - `main`: stable and deployable. Never commit or push to it. Make no changes while `main` is checked out.
-- `feature/portfolio-ui`: Angular UI only (components, sections, styling, portfolio data). Do not modify GitHub Actions workflows.
-- `feature/github-deployment`: CI/CD and GitHub Pages only (workflows, deployment config). Do not modify UI implementation files. Build config (`angular.json`, `package.json`) may be changed only when required for deployment, and you must state exactly what changed and why.
+<!-- - `feature/portfolio-ui`: Angular UI only (components, sections, styling, portfolio data). Do not modify GitHub Actions workflows. -->
+- `main`: stable and deployable. Never commit or push to it. Make no changes while `main` is checked out.
+- `feature/github-deployment` and any `ci/*` branch: CI/CD and GitHub Pages deployment only (workflows, deployment config). Do not modify UI implementation files. Build config (`angular.json`, `package.json`) may be changed only when required for deployment, and state exactly what changed and why.
+- Any other `feature/*` branch (for example `feature/portfolio-ui` or `feature/hero-about`): Angular UI work only (components, sections, styling, portfolio data). Do not modify `.github/workflows/` or deployment config.
+- If a task needs files outside the current branch's scope, stop and tell me.
 - If a task needs files outside the current branch's scope, stop and tell me.
 
 ### Safety Rules
