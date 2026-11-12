@@ -1,3 +1,15 @@
-<section id="hero" aria-labelledby="hero-title">
-  <h1 id="hero-title">Hero</h1>
+<section id="hero" class="hero-section" aria-labelledby="hero-title">
+  <div class="hero-content">
+    <h1 id="hero-title">{{ profile.name }}</h1>
+    <p class="hero-designation">{{ profile.designation }}</p>
+    <p class="hero-tagline">{{ profile.tagline }}</p>
+    <p class="hero-intro">{{ profile.intro }}</p>
+    <div class="hero-actions">
+      <app-button [href]="profile.github" target="_blank">GitHub</app-button>
+      <app-button [href]="profile.linkedin" target="_blank" variant="secondary"
+        >LinkedIn</app-button
+      >
+      <app-button [href]="profile.resumeUrl" variant="secondary">Resume</app-button>
+    </div>
+  </div>
 </section>
