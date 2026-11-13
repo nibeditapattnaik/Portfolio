@@ -368,7 +368,9 @@ h2 {
 }
 
 .focus-grid,
-.skills-grid {
+.skills-grid,
+.projects-grid,
+.education-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-4);
@@ -376,7 +378,10 @@ h2 {
 }
 
 .focus-grid > app-card,
-.skills-grid > app-card {
+.skills-grid > app-card,
+.projects-grid > app-card,
+.education-grid > app-card,
+.experience-timeline > li > app-card {
   display: block;
   min-width: 0;
 }
@@ -384,6 +389,118 @@ h2 {
 .focus-grid p {
   margin: 0;
   color: var(--color-muted);
+}
+
+.projects-grid p,
+.education-grid p {
+  color: var(--color-muted);
+}
+
+.project-detail {
+  margin-top: var(--space-6);
+}
+
+.project-detail h4 {
+  margin: 0 0 var(--space-2);
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+.project-detail p {
+  margin: 0;
+}
+
+.projects-grid .tag-list {
+  margin-top: var(--space-4);
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: var(--space-6);
+  font-weight: 600;
+}
+
+.experience-timeline {
+  display: grid;
+  gap: var(--space-6);
+  margin: var(--space-8) 0 0;
+  padding: 0 0 0 var(--space-6);
+  border-left: 2px solid var(--color-border);
+  list-style: none;
+}
+
+.experience-timeline > li {
+  position: relative;
+  min-width: 0;
+}
+
+.experience-timeline > li::before {
+  position: absolute;
+  top: var(--space-6);
+  left: calc(-1 * var(--space-6) - 0.4375rem);
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary);
+  content: '';
+}
+
+.timeline-company,
+.timeline-period {
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted);
+}
+
+.timeline-company {
+  font-weight: 600;
+}
+
+.experience-highlights {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-4) 0 0;
+  padding-left: 1.25rem;
+  color: var(--color-muted);
+}
+
+.education-grid .education-institution {
+  margin-top: 0;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.section-subheading {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 1.25rem;
+}
+
+.certifications {
+  margin-top: var(--space-12);
+}
+
+.certification-list {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.certification-list li {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  border-left: 3px solid var(--color-primary);
+  background: #eef2ff;
+  color: var(--color-muted);
+}
+
+.certification-title {
+  color: var(--color-text);
+  font-weight: 600;
 }
 
 @media (min-width: 64rem) {
@@ -423,6 +540,11 @@ h2 {
 
   .skills-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .projects-grid,
+  .education-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

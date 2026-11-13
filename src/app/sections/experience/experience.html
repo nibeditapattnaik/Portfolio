@@ -1,3 +1,19 @@
 <section id="experience" aria-labelledby="experience-title">
   <app-section-heading headingId="experience-title">Experience</app-section-heading>
+  <ol class="experience-timeline">
+    @for (entry of experience; track entry.company + entry.period) {
+      <li>
+        <app-card>
+          <h3 class="card-title">{{ entry.role }}</h3>
+          <p class="timeline-company">{{ entry.company }}</p>
+          <p class="timeline-period">{{ entry.period }}</p>
+          <ul class="experience-highlights">
+            @for (highlight of entry.highlights; track highlight) {
+              <li>{{ highlight }}</li>
+            }
+          </ul>
+        </app-card>
+      </li>
+    }
+  </ol>
 </section>
