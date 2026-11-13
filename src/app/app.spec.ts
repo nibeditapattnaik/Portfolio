@@ -204,4 +204,46 @@ describe('App', () => {
       expect(item.textContent).toContain(certification.year);
     });
   });
+
+  it('should render contact links from the profile with safe external-link attributes', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const emailLink = compiled.querySelector<HTMLAnchorElement>(
+      '#contact a[href="mailto:' + PROFILE.email + '"]',
+    );
+    const linkedinLink = compiled.querySelector<HTMLAnchorElement>(
+      '#contact a[href="' + PROFILE.linkedin + '"]',
+    );
+    const githubLink = compiled.querySelector<HTMLAnchorElement>(
+      '#contact a[href="' + PROFILE.github + '"]',
+    );
+
+    expect(compiled.querySelector('#contact h2')?.textContent?.trim()).toBe('Contact');
+    expect(emailLink?.textContent?.trim()).toBe(PROFILE.email);
+    expect(linkedinLink?.textContent?.trim()).toBe('Connect on LinkedIn');
+    expect(githubLink?.textContent?.trim()).toBe('View GitHub profile');
+    expect(linkedinLink?.target).toBe('_blank');
+    expect(linkedinLink?.rel).toBe('noopener noreferrer');
+    expect(githubLink?.target).toBe('_blank');
+    expect(githubLink?.rel).toBe('noopener noreferrer');
+  });
+
+  it('should render the profile name, current year, and social links in the footer', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const footer = compiled.querySelector('footer');
+    const githubLink = footer?.querySelector<HTMLAnchorElement>('a[href="' + PROFILE.github + '"]');
+    const linkedinLink = footer?.querySelector<HTMLAnchorElement>(
+      'a[href="' + PROFILE.linkedin + '"]',
+    );
+
+    expect(footer?.textContent).toContain(PROFILE.name);
+    expect(footer?.textContent).toContain(String(new Date().getFullYear()));
+    expect(githubLink?.target).toBe('_blank');
+    expect(githubLink?.rel).toBe('noopener noreferrer');
+    expect(linkedinLink?.target).toBe('_blank');
+    expect(linkedinLink?.rel).toBe('noopener noreferrer');
+  });
 });

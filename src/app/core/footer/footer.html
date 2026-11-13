@@ -1,5 +1,15 @@
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <p>Portfolio</p>
+    <p class="site-footer__copyright">&copy; {{ currentYear }} {{ profile.name }}</p>
+    <nav aria-label="Footer social links">
+      <ul class="site-footer__links">
+        <li>
+          <a [href]="profile.github" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </li>
+        <li>
+          <a [href]="profile.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </footer>

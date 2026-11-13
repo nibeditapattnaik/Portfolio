@@ -1,6 +1,7 @@
 :root {
   color-scheme: light;
   --color-primary: #3730a3;
+  --color-primary-dark: #1e1b4b;
   --color-dark: #1e1b4b;
   --color-accent: #fbbf24;
   --color-surface: #f8fafc;
@@ -196,12 +197,56 @@ h2 {
 
 .site-footer {
   margin-top: var(--space-8);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-primary-dark);
+  background: var(--color-primary-dark);
+  color: #ffffff;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.site-footer__copyright {
+  margin: 0;
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__links a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.site-footer__links a:hover,
+.site-footer__links a:focus-visible {
+  color: var(--color-accent);
+}
+
+.site-footer :focus-visible {
+  outline-color: var(--color-accent);
+}
+
+.contact-invitation {
+  margin: var(--space-6) 0 0;
   color: var(--color-muted);
 }
 
-.site-footer p {
-  margin: 0;
+.contact-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
 }
 
 .card {
@@ -506,6 +551,17 @@ h2 {
 @media (min-width: 64rem) {
   .site-header {
     padding-inline: var(--space-8);
+  }
+
+  .site-footer__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .contact-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .site-menu-toggle {

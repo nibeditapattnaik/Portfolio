@@ -1,3 +1,13 @@
 <section id="contact" aria-labelledby="contact-title">
   <app-section-heading headingId="contact-title">Contact</app-section-heading>
+  <p class="contact-invitation">{{ invitation }}</p>
+  <div class="contact-actions">
+    <app-button [href]="'mailto:' + profile.email">{{ profile.email }}</app-button>
+    <app-button [href]="profile.linkedin" target="_blank" variant="secondary">
+      Connect on LinkedIn
+    </app-button>
+    <app-button [href]="profile.github" target="_blank" variant="secondary">
+      View GitHub profile
+    </app-button>
+  </div>
 </section>

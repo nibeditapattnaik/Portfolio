@@ -1,3 +1,4 @@
+<ng-template #buttonContent><ng-content /></ng-template>
 @if (href !== null) {
   <a
     class="button"
@@ -7,7 +8,7 @@
     [target]="target"
     [rel]="target === '_blank' ? 'noopener noreferrer' : null"
   >
-    <ng-content />
+    <ng-container [ngTemplateOutlet]="buttonContent" />
   </a>
 } @else {
   <button
@@ -16,6 +17,6 @@
     [class.button--secondary]="variant === 'secondary'"
     type="button"
   >
-    <ng-content />
+    <ng-container [ngTemplateOutlet]="buttonContent" />
   </button>
 }
