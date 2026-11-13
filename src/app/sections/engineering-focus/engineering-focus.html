@@ -1,3 +1,11 @@
 <section id="engineering-focus" aria-labelledby="engineering-focus-title">
   <app-section-heading headingId="engineering-focus-title">Engineering Focus</app-section-heading>
+  <div class="focus-grid">
+    @for (focusArea of focusAreas; track focusArea.title) {
+      <app-card>
+        <h3 class="card-title">{{ focusArea.title }}</h3>
+        <p>{{ focusArea.description }}</p>
+      </app-card>
+    }
+  </div>
 </section>
