@@ -1,3 +1,30 @@
 <section id="education" aria-labelledby="education-title">
   <app-section-heading headingId="education-title">Education</app-section-heading>
+  <div class="education-grid">
+    @for (item of education; track item.institution + item.degree) {
+      <app-card>
+        <h3 class="card-title">{{ item.degree }}</h3>
+        <p class="education-institution">{{ item.institution }}</p>
+        <p>{{ item.period }}</p>
+        @if (item.location) {
+          <p>{{ item.location }}</p>
+        }
+        @if (item.grade) {
+          <p>{{ item.grade }}</p>
+        }
+      </app-card>
+    }
+  </div>
+  <div class="certifications">
+    <h3 class="section-subheading">Certifications</h3>
+    <ul class="certification-list">
+      @for (certification of certifications; track certification.title + certification.issuer) {
+        <li>
+          <span class="certification-title">{{ certification.title }}</span>
+          <span>{{ certification.issuer }}</span>
+          <span>{{ certification.year }}</span>
+        </li>
+      }
+    </ul>
+  </div>
 </section>
