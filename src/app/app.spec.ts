@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
-import { PROFILE } from './data/profile';
+import { FOCUS_AREAS, PROFILE } from './data/profile';
+import { SKILLS } from './data/skills';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -79,5 +80,33 @@ describe('App', () => {
     fixture.detectChanges();
     expect(menuButton?.getAttribute('aria-expanded')).toBe('false');
     expect(nav?.classList.contains('site-nav--open')).toBeFalse();
+  });
+
+  it('should render all focus areas and skill categories from their data', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(
+      Array.from(compiled.querySelectorAll('#engineering-focus .card-title')).map((heading) =>
+        heading.textContent?.trim(),
+      ),
+    ).toEqual(FOCUS_AREAS.map((focusArea) => focusArea.title));
+    expect(
+      Array.from(compiled.querySelectorAll('#engineering-focus app-card p')).map((description) =>
+        description.textContent?.trim(),
+      ),
+    ).toEqual(FOCUS_AREAS.map((focusArea) => focusArea.description));
+
+    expect(
+      Array.from(compiled.querySelectorAll('#skills .card-title')).map((heading) =>
+        heading.textContent?.trim(),
+      ),
+    ).toEqual(SKILLS.map((category) => category.category));
+    expect(
+      Array.from(compiled.querySelectorAll('#skills app-tag-chip')).map((chip) =>
+        chip.textContent?.trim(),
+      ),
+    ).toEqual(SKILLS.flatMap((category) => category.skills));
   });
 });

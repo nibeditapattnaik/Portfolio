@@ -209,6 +209,21 @@ h2 {
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
   background: var(--color-surface);
+  box-shadow: 0 0.25rem 1rem rgb(15 23 42 / 8%);
+  transition:
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.card:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.75rem 1.5rem rgb(15 23 42 / 12%);
+}
+
+.card-title {
+  margin: 0 0 var(--space-4);
+  color: var(--color-primary);
+  font-size: 1.125rem;
 }
 
 .tag-chip {
@@ -352,6 +367,25 @@ h2 {
   list-style: none;
 }
 
+.focus-grid,
+.skills-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.focus-grid > app-card,
+.skills-grid > app-card {
+  display: block;
+  min-width: 0;
+}
+
+.focus-grid p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
 @media (min-width: 64rem) {
   .site-header {
     padding-inline: var(--space-8);
@@ -382,10 +416,29 @@ h2 {
   main section {
     padding-block: var(--space-16);
   }
+
+  .focus-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) and (max-width: 63.999rem) {
+  .focus-grid,
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .card {
+    transition: none;
   }
 }

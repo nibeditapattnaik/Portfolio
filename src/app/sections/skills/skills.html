@@ -1,3 +1,15 @@
 <section id="skills" aria-labelledby="skills-title">
   <app-section-heading headingId="skills-title">Skills</app-section-heading>
+  <div class="skills-grid">
+    @for (category of skillCategories; track category.category) {
+      <app-card>
+        <h3 class="card-title">{{ category.category }}</h3>
+        <ul class="tag-list" [attr.aria-label]="category.category + ' skills'">
+          @for (skill of category.skills; track skill) {
+            <li><app-tag-chip [label]="skill" /></li>
+          }
+        </ul>
+      </app-card>
+    }
+  </div>
 </section>
